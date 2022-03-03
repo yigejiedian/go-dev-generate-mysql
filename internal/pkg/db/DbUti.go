@@ -31,9 +31,9 @@ func InitDB(mysqlConfs map[string]interface{}) {
 		if !ok {
 			log.Fatal("mysql.password not find")
 		}
-		//dsn := "tao:taodyd123@tcp(127.0.0.1:3306)/ht-admin?charset=utf8mb4&parseTime=True&loc=Local"
+
 		dsn := fmt.Sprintf("%s:%s@%s", username, password, url)
-		fmt.Println(dsn)
+
 		var err error = nil
 		DB, err = gorm.Open(mysql.Open(dsn), &gorm.Config{
 			NamingStrategy: schema.NamingStrategy{
@@ -43,7 +43,7 @@ func InitDB(mysqlConfs map[string]interface{}) {
 			Logger: logger.Default.LogMode(logger.Info),
 		})
 		if err != nil {
-			panic("failed to connect database")
+			log.Fatal("failed to connect database")
 		}
 
 		sqlDB, _ := DB.DB()
