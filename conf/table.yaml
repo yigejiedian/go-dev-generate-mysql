@@ -1,0 +1,7 @@
+table:
+  # 删除前缀
+  prefix: "sys_"
+  # 表名
+  name: "sys_user"
+  # 功能描述
+  comment: "用户表"
